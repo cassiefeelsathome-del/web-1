@@ -1,43 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Projects @gaytree</title>
+    <title>Main @gaytree</title>
   </head>
   <body>
     <div class="js-container"></div>
-    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <link   rel="stylesheet"   href="https://unpkg.com/98.css">
 
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
 
-      function Navigate() {
-        function goTo(path) {
-          window.location.href = path;
-        }
+    function Navigate(path) {
+      const [page, setPage] = React.useState(window.location.pathname);
 
-        return (
-          <>
-            <button onClick={() => goTo('./projects/chatbot.html')}>
-              Chatbot
-            </button>
-            <p>Paragraph of text</p>
-          </>
-        );
-      }
+      function other(path) {
+        window.history.pushState({}, '', path);
+        setPage(path);
+      
+      return (
+      <>
+        <button 
+        onClick={() => window.location.href = 'projects/chatbot.html'}>
+        Chatbot</button>
+        <p>Paragraph of text</p>
+      </>
+    );
+    }
+    }
 
-      function App() {
-        return (
-          <div>
-            <Navigate />
-          </div>
-        );
-      }
+      
+  function App() {
+    
+
+    return (
+      <div>
+        <Navigate />
+      </div>
+    );
+}
+
 
       const container = document.querySelector('.js-container');
       ReactDOM.createRoot(container).render(<App />);
-
     </script>
   </body>
 </html>
